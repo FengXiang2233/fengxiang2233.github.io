@@ -43,8 +43,7 @@ API v1均可使用HTTP GET/POST请求
     |token|string|用户唯一识别符|
 - 返回
     
-    返回为一个list内含诺干个Map
-
+    返回为一个list内含诺干个Map   
     每个Map代表一条隧道
 
     Map参数:
