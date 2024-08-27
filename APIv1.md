@@ -34,3 +34,40 @@ API v1均可使用HTTP GET/POST请求
 
       国内带宽限制: bandwidth*1
       国外宽带限制: bandwidth*4
+## 用户隧道信息
+- 接口
+    > /usertunnel.php
+- 请求参数
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |token|string|用户唯一识别符|
+- 返回
+    
+    返回为一个list内含诺干个Map
+
+    每个Map代表一条隧道
+
+    Map参数:
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |id|string|隧道唯一识别id|
+    |name|string|隧道名称|
+    |node|string|节点名称|
+    |type|string|隧道类型|
+    |ip|string|该隧道的连接地址|
+    |localip|string|隧道本地IP|
+    |nport|string|隧道本地端口|
+## 删除隧道
+- 接口
+    > /deletetl.php
+- 请求参数
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |token|string|用户唯一识别符|
+    |userid|string|用户唯一识别id|
+    |nodeid|string|隧道唯一识别id|
+- 返回参数
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |code|number|状态码|
+    |error|string|返回信息|
