@@ -1,3 +1,2 @@
 - [简介](/)
-- [API v1](/APIv1)
-    - [登录](/APIv1?id=登录)
+- [API v1](/APIv1.md)
