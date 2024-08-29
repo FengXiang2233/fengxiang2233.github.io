@@ -43,7 +43,7 @@ API v1均可使用HTTP GET/POST请求
         |error|string|错误信息|
 
     ```
-    *用户带宽限制:
+    用户带宽限制:
     
      国内带宽限制: bandwidth*1
     
@@ -157,4 +157,6 @@ API v1均可使用HTTP GET/POST请求
         |code|number|状态码|
         |error|string|错误信息|
         
+
+
 <!-- TODO /tunnelinfo.php>
