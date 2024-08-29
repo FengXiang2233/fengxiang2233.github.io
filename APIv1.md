@@ -42,10 +42,11 @@ API v1均可使用HTTP GET/POST请求
         |:--:|:--:|:--:|
         |error|string|错误信息|
 
+    ```
     *用户带宽限制:
-
       国内带宽限制: bandwidth*1
       国外宽带限制: bandwidth*4
+    ```
 ## 用户隧道信息
 - 接口
     > /usertunnel.php
@@ -105,7 +106,6 @@ API v1均可使用HTTP GET/POST请求
 - 接口
     > /cztunnel.php
 - 请求参数
-
     ```
     tip:
     这个接口Query参数和上一个一样
