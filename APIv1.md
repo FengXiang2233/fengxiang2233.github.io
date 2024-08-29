@@ -44,8 +44,8 @@ API v1均可使用HTTP GET/POST请求
 
     ```
     *用户带宽限制:
-      国内带宽限制: bandwidth*1
-      国外宽带限制: bandwidth*4
+     国内带宽限制: bandwidth*1
+     国外宽带限制: bandwidth*4
     ```
 ## 用户隧道信息
 - 接口
