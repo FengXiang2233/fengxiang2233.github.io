@@ -44,8 +44,8 @@ API v1均可使用HTTP GET/POST请求
 
     ```
     用户带宽限制:
-     国内带宽限制: bandwidth*1
-     国外宽带限制: bandwidth*4
+    国内带宽限制: bandwidth*1
+    国外宽带限制: bandwidth*4
     ```
 ## 节点信息
 - 接口
@@ -296,8 +296,8 @@ API v1均可使用HTTP GET/POST请求
 
         ```
         tip:
-         和/login接口成功时返回基本一样
-         只是少了token,code,background_img
+        和/login接口成功时返回基本一样
+        只是少了token,code,background_img
         ```
 
         |属性|类型|说明|
@@ -322,11 +322,9 @@ API v1均可使用HTTP GET/POST请求
         |message|string|错误信息|
 
     ```
-    *用户带宽限制:
-    
-     国内带宽限制: bandwidth*1
-    
-     国外宽带限制: bandwidth*4
+    用户带宽限制:
+    国内带宽限制: bandwidth*1
+    国外宽带限制: bandwidth*4
     ```
 ## 用户流量消耗
 - 接口
@@ -396,12 +394,13 @@ API v1均可使用HTTP GET/POST请求
         每个Map代表一条隧道
 
         Map:
-         |属性|类型|说明|
-         |:--:|:--:|:--:|
-         |id|string|节点id|
-         |name|sting|节点名称|
-         |data|list|*所属节点隧道|
+        |属性|类型|说明|
+        |:--:|:--:|:--:|
+        |id|string|节点id|
+        |name|sting|节点名称|
+        |data|list|*所属节点隧道|
         
+
         所属节点隧道:
         ```json
         [
