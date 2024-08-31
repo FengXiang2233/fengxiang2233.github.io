@@ -5,6 +5,7 @@ API v1均可使用HTTP GET/POST请求
 
 统一调用地址
 > https://cf-v1.uapis.cn/api
+
 ## 登录
 - 接口
     > /login.php
@@ -47,6 +48,7 @@ API v1均可使用HTTP GET/POST请求
     国内带宽限制: bandwidth*1
     国外宽带限制: bandwidth*4
     ```
+
 ## 节点信息
 - 接口
     > /unode.php
@@ -74,6 +76,7 @@ API v1均可使用HTTP GET/POST请求
     |rport|string|节点frp端口限制|
     |udp|string|节点是否可以使用upd<true/false>|
     |wed|string|节点是否可以建站<yes/no>|
+
 
 ## 用户隧道信息
 - 接口
@@ -110,6 +113,7 @@ API v1均可使用HTTP GET/POST请求
         |:--:|:--:|:--:|
         |code|number|状态码|
         |error|string|错误信息|
+
 ## 隧道信息
 - 接口
     > /tunnelinfo.php
@@ -165,6 +169,7 @@ API v1均可使用HTTP GET/POST请求
 - 返回
 
     该接口无返回
+
 ## 重新设置隧道
 - 接口
     > /cztunnel.php
@@ -191,6 +196,7 @@ API v1均可使用HTTP GET/POST请求
 - 返回
 
     该接口无返回
+
 ## 删除隧道
 - 接口
     > /deletetl.php
@@ -207,6 +213,7 @@ API v1均可使用HTTP GET/POST请求
     |:--:|:--:|:--:|
     |code|number|状态码 200为成功|
     |error|string|返回信息|
+
 ## frp配置文件生成
 - 接口
     > /frpconfig.php
@@ -223,6 +230,7 @@ API v1均可使用HTTP GET/POST请求
     |status|number|状态码 200为成功|
     |success|boolean|状态 true为成功|
     |message|string|该节点all隧道的frp配置文件|
+
 ## 重置令牌
 - 接口
     > /resusertoken.php
@@ -244,6 +252,7 @@ API v1均可使用HTTP GET/POST请求
         |属性|类型|说明|
         |:--:|:--:|:--:|
         |error|string|错误信息|
+
 ## 签到
 - 接口
     > /qiandao.php
@@ -262,6 +271,7 @@ API v1均可使用HTTP GET/POST请求
     |points|number|获得积分|
     |total_sign_ins|number|累计签到次数|
     |total_points|number|累计积分|
+
 ## 签到信息
 - 接口
     > /qdxx.php
@@ -280,6 +290,7 @@ API v1均可使用HTTP GET/POST请求
     |total_points|number|累计积分|
     |count_of_matching_records|number|今天签到人数|
     |total_sign_ins|string|累计签到次数|
+
 ## 用户信息
 - 接口
     > /userinfo.php
@@ -326,6 +337,7 @@ API v1均可使用HTTP GET/POST请求
     国内带宽限制: bandwidth*1
     国外宽带限制: bandwidth*4
     ```
+
 ## 用户流量消耗
 - 接口
  > /flow_zong.php
@@ -376,6 +388,7 @@ API v1均可使用HTTP GET/POST请求
     |time|string|日期|
     |traffic_in|number|下载数据|
     |traffic_out|number|上传数据|
+
 ## 用户节点数据
 - 接口
     > /confignode.php
@@ -399,7 +412,6 @@ API v1均可使用HTTP GET/POST请求
         |id|string|节点id|
         |name|sting|节点名称|
         |data|list|*所属节点隧道|
-        
 
         所属节点隧道:
         ```json
@@ -420,6 +432,7 @@ API v1均可使用HTTP GET/POST请求
         |tunnel_name|srting|隧道名称|
     - 查询失败
         空返回
+
 ## 面板设置
 - 接口
     > /usersetup.php
@@ -443,6 +456,7 @@ API v1均可使用HTTP GET/POST请求
     |:--:|:--:|:--:|
     |code|number|状态码|
     |error|string|返回信息|
+
 ## 面板信息
 - 接口
     > /sinfo.php
