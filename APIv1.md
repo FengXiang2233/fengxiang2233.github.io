@@ -348,6 +348,7 @@ API v1均可使用HTTP GET/POST请求
     |:--:|:--:|:--:|
     |usertoken|string|用户令牌|
 - 返回
+
     通常为两种情况 请注意分辨
 
     此接口可以使用返回的status参数识别
