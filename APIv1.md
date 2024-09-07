@@ -1,5 +1,5 @@
 # API v1
-API v1均可使用HTTP GET/POST请求
+API v1大部分接口同时支持HTTP GET/POST请求
 
 请在调用过程中多观察增强报错处理 考虑多种情况
 
@@ -11,7 +11,7 @@ API v1均可使用HTTP GET/POST请求
     > /login.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |username|string|用户名/用户QQ号|
@@ -38,16 +38,16 @@ API v1均可使用HTTP GET/POST请求
         |bandwidth|number|*用户带宽限制(Mdps)
         |realname|string|用户实名状态|
         |background_img|string|用户背景图片url|
+
+        ```
+        用户带宽限制:
+        国内带宽限制: bandwidth*1
+        国外宽带限制: bandwidth*4
+        ```
     - 查询失败返回
         |属性|类型|说明|
         |:--:|:--:|:--:|
         |error|string|错误信息|
-
-    ```
-    用户带宽限制:
-    国内带宽限制: bandwidth*1
-    国外宽带限制: bandwidth*4
-    ```
 
 ## 节点信息
 - 接口
@@ -77,13 +77,12 @@ API v1均可使用HTTP GET/POST请求
     |udp|string|节点是否可以使用upd<true/false>|
     |wed|string|节点是否可以建站<yes/no>|
 
-
 ## 用户隧道信息
 - 接口
     > /usertunnel.php
 - 请求参数
 
-   Query/JSON:
+   Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |token|string|用户令牌|
@@ -119,7 +118,7 @@ API v1均可使用HTTP GET/POST请求
     > /tunnelinfo.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|说明|
     |:--:|:--:|
     |id|隧道识别id|
@@ -154,7 +153,7 @@ API v1均可使用HTTP GET/POST请求
     > /tunnel.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |token|string|用户令牌|
@@ -163,9 +162,16 @@ API v1均可使用HTTP GET/POST请求
     |node|string|节点名称|
     |name|string|隧道名称|
     |ap|string|frp额外参数|
-    |dorp|number|外网端口|
+    |dorp|number|外网端口/绑定域名|
     |localip|string|内网地址|
     |nport|string|内网端口|
+    |domainNameLabel|string|*使用域名类型|
+
+    ```
+    使用域名类型：
+    该参数只有http/https类型隧道才需要填写
+    只能填写自定义
+    ```
 - 返回
 
     该接口无返回
@@ -176,11 +182,11 @@ API v1均可使用HTTP GET/POST请求
 - 请求参数
     ```
     tip:
-    这个接口Query/JSON参数和上一个一样
+    这个接口Query/表单参数和上一个一样
     只是多了一个tunnelid
     ```
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |token|string|用户令牌|
@@ -189,7 +195,7 @@ API v1均可使用HTTP GET/POST请求
     |node|string|节点名称|
     |name|string|隧道名称|
     |ap|string|frp额外参数|
-    |dorp|number|外网端口|
+    |dorp|number|外网端口/绑定域名|
     |localip|string|内网地址|
     |nport|string|内网端口|
     |tunnelid|string|需要修改的隧道识别id|
@@ -202,7 +208,7 @@ API v1均可使用HTTP GET/POST请求
     > /deletetl.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |token|string|用户令牌|
@@ -219,7 +225,7 @@ API v1均可使用HTTP GET/POST请求
     > /frpconfig.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |usertoken|string|用户令牌|
@@ -231,12 +237,39 @@ API v1均可使用HTTP GET/POST请求
     |success|boolean|状态 true为成功|
     |message|string|该节点all隧道的frp配置文件|
 
+## 域名解析查询
+- 接口
+    > /Domain_name_query.php
+- 请求参数
+    
+    Query/表单:
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |domain|string|域名|
+    |target_domain|string|解析到域名|
+- 返回
+
+    通常为两种情况 请注意分辨
+
+    - 查询成功
+        |属性|类型|说明|
+        |:--:|:--:|:--:|
+        |domain|string|域名|
+        |status|string|状态|
+        |hasSrvToFrpOne|boolean|是否通过Srv解析|
+        |hasCnameToFrpOne|boolean|是否通过Cname解析|
+    - 查询失败
+        |属性|类型|说明|
+        |:--:|:--:|:--:|
+        |status|string|状态|
+        |message|string|错误信息|
+
 ## 重置令牌
 - 接口
     > /resusertoken.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |usertoken|string|用户令牌|
@@ -253,16 +286,83 @@ API v1均可使用HTTP GET/POST请求
         |:--:|:--:|:--:|
         |error|string|错误信息|
 
+## 发送验证码邮件
+- 接口
+    > /email.php
+- 请求参数
+
+    Query/表单:
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |md5|string|票据|
+    |email|string|发送邮箱|
+    |operate|string|*验证码类型|
+    |g_recaptcha_response|string|人机验证票据|
+
+    验证码类型：
+    |值|说明|
+    |:-:|:-:|
+    |您正在修改密码|修改密码|
+    |感谢您注册CHMLFRP|注册|
+
+- 返回
+
+    通常为两种情况 请注意分辨
+
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |status|string|状态|
+    |message|string|返回信息|
+
+## 注册
+- 接口
+    > /register.php
+- 请求参数
+
+    Query/表单:
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |username|string|用户名|
+    |password|string|密码|
+    |qq|string|QQ号|
+    |email|string|邮箱|
+    |verificationCode|string|验证码|
+- 返回
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |message|string|返回信息|
+    |success|boolean|状态|
+
+## 实名验证
+- 接口
+    >POST /realname.php
+- 请求参数
+
+    > 该接口只能使用POST请求
+
+    表单:
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |usertoken|string|用户令牌|
+    |userid|string|用户id|
+    |name|string|名字|
+    |idcard|string|身份证|
+- 返回
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |status|string|状态|
+    |message|string|返回信息|
+
 ## 签到
 - 接口
     > /qiandao.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |usertoken|string|用户令牌|
-    |g_recaptcha_response|string|人机验证返回值|
+    |g_recaptcha_response|string|人机验证票据|
 - 返回
     |属性|类型|说明|
     |:--:|:--:|:--:|
@@ -272,12 +372,39 @@ API v1均可使用HTTP GET/POST请求
     |total_sign_ins|number|累计签到次数|
     |total_points|number|累计积分|
 
+## 兑换码兑换
+- 接口
+    > /giftcode.php
+- 请求参数
+    
+    Query/表单:
+    |属性|类型|说明|
+    |:--:|:--:|:--:|
+    |userid|string|用户id|
+    |usertoken|string|用户令牌|
+    |giftcode|string|兑换码|
+- 返回
+
+    通常为两种情况 请注意分辨
+
+    - 查询成功
+        |属性|类型|说明|
+        |:--:|:--:|:--:|
+        |success|boolean|值为true|
+        |message|string|返回信息|
+        |gift_value|string|兑换内容|
+    - 查询失败
+        |属性|类型|说明|
+        |:--:|:--:|:--:|
+        |success|boolean|值为false|
+        |message|string|错误信息|
+
 ## 签到信息
 - 接口
     > /qdxx.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |userid|string|用户id|
@@ -296,7 +423,7 @@ API v1均可使用HTTP GET/POST请求
     > /userinfo.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |userid|string|用户id|
@@ -343,7 +470,7 @@ API v1均可使用HTTP GET/POST请求
  > /flow_zong.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |usertoken|string|用户令牌|
@@ -395,7 +522,7 @@ API v1均可使用HTTP GET/POST请求
     > /confignode.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |userid|string|用户id|
@@ -439,7 +566,7 @@ API v1均可使用HTTP GET/POST请求
     > /usersetup.php
 - 请求参数
 
-    Query/JSON:
+    Query/表单:
     |属性|类型|说明|
     |:--:|:--:|:--:|
     |usertoken|string|用户令牌|
