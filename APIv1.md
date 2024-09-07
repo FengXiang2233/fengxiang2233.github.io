@@ -182,7 +182,7 @@ API v1大部分接口同时支持HTTP GET/POST请求
 - 请求参数
     ```
     tip:
-    这个接口Query/表单参数和上一个一样
+    这个接口 Query/表单 参数和上一个一样
     只是多了一个tunnelid
     ```
 
@@ -335,7 +335,7 @@ API v1大部分接口同时支持HTTP GET/POST请求
 
 ## 实名验证
 - 接口
-    >POST /realname.php
+    >POST  /realname.php
 - 请求参数
 
     > 该接口只能使用POST请求
