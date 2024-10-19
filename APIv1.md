@@ -8,7 +8,7 @@ API v1大部分接口同时支持HTTP GET/POST请求
 
 ## 登录
 - 接口
-    > /login.php
+    > /login.php 
 - 请求参数
 
     Query/表单:
